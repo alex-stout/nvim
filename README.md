@@ -1,1 +1,3 @@
-# vim-conf
+# Nvim config
+
+My NVIM config.
