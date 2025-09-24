@@ -1,12 +1,12 @@
 local root_files = {
-  '.luarc.json',
-  '.luarc.jsonc',
-  '.luacheckrc',
-  '.stylua.toml',
-  'stylua.toml',
-  'selene.toml',
-  'selene.yml',
-  '.git',
+    '.luarc.json',
+    '.luarc.jsonc',
+    '.luacheckrc',
+    '.stylua.toml',
+    'stylua.toml',
+    'selene.toml',
+    'selene.yml',
+    '.git',
 }
 
 return {
@@ -28,7 +28,15 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-            }
+                lua = { "stylua" },
+                -- Conform will run multiple formatters sequentially
+                python = { "isort", "black" },
+            },
+            format_on_save = {
+                -- These options will be passed to conform.format()
+                timeout_ms = 500,
+                lsp_format = "fallback",
+            },
         })
         local cmp = require('cmp')
 
@@ -63,6 +71,9 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
+                                diagnostics = {
+                                    globals = { "vim" }
+                                },
                                 format = {
                                     enable = true,
                                     -- Put format options here
@@ -76,7 +87,7 @@ return {
                         }
                     }
                 end,
-           }
+            }
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -102,11 +113,9 @@ return {
         })
 
         vim.diagnostic.config({
-            -- update_in_insert = true,
+            update_in_insert = true,
             virtual_text = true,
             float = {
-                focusable = false,
-                style = "minimal",
                 border = "rounded",
                 source = "always",
                 header = "",
