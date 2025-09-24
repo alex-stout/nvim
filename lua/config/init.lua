@@ -1,6 +1,7 @@
 require("config.lazy")
 require("config.remap")
 require("config.set")
+require("config.color")
 
 local augroup = vim.api.nvim_create_augroup
 local customGroup = augroup('custom', {})
