@@ -51,7 +51,6 @@ return {
 		)
 
 		require("fidget").setup({})
-		require("lspconfig").tsserver.setup({})
 
 		require("mason").setup()
 
