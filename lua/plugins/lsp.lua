@@ -43,6 +43,10 @@ return {
 
 		local cmp_lsp = require("cmp_nvim_lsp")
 
+		local lspconfig = require("lspconfig")
+
+		lspconfig.tsserver.setup({})
+
 		local capabilities = vim.tbl_deep_extend(
 			"force",
 			{},
