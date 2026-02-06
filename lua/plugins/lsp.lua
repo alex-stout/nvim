@@ -47,6 +47,8 @@ return {
 
 		lspconfig.tsserver.setup({})
 
+		lspconfig.gopls.setup({})
+
 		local capabilities = vim.tbl_deep_extend(
 			"force",
 			{},
