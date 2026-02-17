@@ -43,11 +43,9 @@ return {
 
 		local cmp_lsp = require("cmp_nvim_lsp")
 
-		local lspconfig = require("lspconfig")
+		vim.lsp.enable('tsserver')
 
-		lspconfig.tsserver.setup({})
-
-		lspconfig.gopls.setup({})
+		vim.lsp.enable('gopls')
 
 		local capabilities = vim.tbl_deep_extend(
 			"force",
